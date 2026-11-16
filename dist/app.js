@@ -17,3 +17,40 @@ const shop=document.querySelector('#shop'),interest=document.querySelector('#int
 document.querySelectorAll('[data-shop]').forEach(b=>b.onclick=()=>openShop(b.dataset.interest));products.addEventListener('click',e=>{let b=e.target.closest('[data-consult]');if(!b)return;let p=data[b.dataset.consult],v=b.closest('article').querySelector('select').value;openShop(`Tenho interesse em ${p.n} — ${p.v[v][0]}.`)});
 document.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>{if(!shop.open)openShop();const unit=b.dataset.unit,ig=unit==='Vicente Pires'?'nuty.vicente':'nuty.df';status.innerHTML=`<strong>${unit}</strong><br>O WhatsApp desta unidade ainda será cadastrado. Você pode acessar o perfil informado da loja:<br><a href="https://www.instagram.com/${ig}/" target="_blank" rel="noopener">@${ig} ↗</a>`});
 document.querySelectorAll('dialog').forEach(d=>{d.querySelector('.close').onclick=()=>d.close();d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}})});document.querySelector('#review').onclick=()=>document.querySelector('#review-modal').showModal();document.querySelector('#motion').onclick=function(){const paused=document.body.classList.toggle('paused');this.setAttribute('aria-pressed',paused);this.setAttribute('aria-label',paused?'Retomar animação':'Pausar animação');this.innerHTML=paused?'▷ <span>Retomar movimento</span>':'Ⅱ <span>Pausar movimento</span>'};document.querySelector('#menu').onclick=function(){let open=document.querySelector('nav').classList.toggle('open');this.setAttribute('aria-expanded',open);this.textContent=open?'×':'☰'};document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>{document.querySelector('nav').classList.remove('open');document.querySelector('#menu').setAttribute('aria-expanded','false');document.querySelector('#menu').textContent='☰'});
+
+/* ── Rolagem suave (Lenis) ────────────────────────────────────────────────
+   Só ativa com movimento permitido; respeita prefers-reduced-motion e pausa
+   enquanto um <dialog> modal está aberto. Âncoras usam o mesmo respiro do
+   scroll-padding-top (95px). */
+(function(){
+  if(window.Lenis===undefined)return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+
+  const lenis=new Lenis({lerp:.09,smoothWheel:true,wheelMultiplier:1,autoRaf:false});
+  function raf(t){lenis.raf(t);requestAnimationFrame(raf)}
+  requestAnimationFrame(raf);
+  window.lenis=lenis;
+
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="#"]');
+    if(!a)return;
+    const id=a.getAttribute('href');
+    if(!id||id.length<2)return;
+    const el=document.querySelector(id);
+    if(!el)return;
+    e.preventDefault();
+    lenis.scrollTo(el,{offset:-95});
+  });
+
+  const showModal=HTMLDialogElement.prototype.showModal;
+  HTMLDialogElement.prototype.showModal=function(){showModal.call(this);lenis.stop()};
+  const closeModal=HTMLDialogElement.prototype.close;
+  HTMLDialogElement.prototype.close=function(){
+    closeModal.call(this);
+    if(!document.querySelector('dialog[open]'))lenis.start();
+  };
+
+  document.querySelector('#motion').addEventListener('click',()=>{
+    document.body.classList.contains('paused')?lenis.stop():lenis.start();
+  });
+})();
