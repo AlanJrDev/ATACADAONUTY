@@ -11,24 +11,86 @@
   --lift-shadow:0 16px 32px -14px #25014866;
 }
 
-/* Botões: elevação de 2px (não 3), sombra difusa e realce interno sutil */
+/* ── CTA: LED neon em repouso + troca de cor no hover ────────────────────
+   Anatomia (ref. aero-hero-3): rótulo + selo circular com seta que atravessa.
+   Cantos 100% arredondados; rim de 2px é o "LED" (conic-gradient girando) e
+   o ::before é o halo borrado que pulsa. Cores só da identidade Nuty. */
+@property --neon-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
+
 .btn{
-  transition:transform var(--dur-hover) var(--ease-out),
-             box-shadow var(--dur-hover) var(--ease-out),
-             background-color var(--dur-hover) ease,
-             color var(--dur-hover) ease,
-             border-color var(--dur-hover) ease}
-.btn>span{display:inline-block;transition:transform var(--dur-hover) var(--ease-out)}
-.btn:active{transform:translateY(0) scale(.985);box-shadow:0 3px 10px -6px #25014859;transition-duration:var(--dur-press)}
-.btn:focus-visible{transform:translateY(-2px);box-shadow:var(--lift-shadow)}
-.btn:focus-visible>span{transform:translate(3px,-3px)}
+  --label-bg:#fff;--label-fg:#250148;
+  --ico-bg:#f1e2f3;--ico-fg:#250148;
+  --rim-a:#d9a5da;--rim-b:#7fa2ff;
+  --rim:2px;
+  position:relative;display:inline-flex;align-items:center;gap:0;
+  padding:var(--rim);border:0;border-radius:999px;
+  background:conic-gradient(from var(--neon-angle,0deg),var(--rim-a),var(--rim-b),var(--rim-a));
+  font-size:13px;font-weight:bold;isolation:isolate;
+  animation:neon-spin 11s linear infinite;
+  transition:transform 320ms var(--ease-out)}
+.btn::before{
+  content:'';position:absolute;inset:-3px;border-radius:inherit;z-index:-1;
+  background:conic-gradient(from var(--neon-angle,0deg),var(--rim-a),var(--rim-b),var(--rim-a));
+  filter:blur(10px);opacity:.4;
+  animation:neon-pulse 4.5s ease-in-out infinite;
+  transition:opacity 320ms var(--ease-out);
+  pointer-events:none}
+.btn-label{
+  display:inline-flex;align-items:center;white-space:nowrap;
+  padding:15px 20px 15px 24px;border-radius:999px;
+  background:var(--label-bg);color:var(--label-fg);
+  transition:background-color 520ms var(--ease-out),color 520ms var(--ease-out)}
+.btn-ico{
+  position:relative;display:grid;place-items:center;flex:none;
+  width:46px;height:46px;border-radius:999px;overflow:hidden;
+  background:var(--ico-bg);color:var(--ico-fg);
+  transition:background-color 520ms var(--ease-out),color 520ms var(--ease-out)}
+.btn-ico>span{
+  grid-area:1/1;display:grid;place-items:center;width:100%;height:100%;
+  font-size:15px;line-height:1;
+  transition:transform 460ms var(--ease-out),opacity 260ms ease}
+.btn-ico>span:nth-child(2){transform:translateX(-140%);opacity:0}
+.btn:active{transform:translateY(0) scale(.985);transition-duration:var(--dur-press)}
+.btn:focus-visible .btn-ico>span:nth-child(1){transform:translateX(140%);opacity:0}
+.btn:focus-visible .btn-ico>span:nth-child(2){transform:translateX(0);opacity:1}
+.btn:focus-visible::before{opacity:.8}
+
+/* variantes: cores da identidade, com contraste AA em ambos os estados */
+.btn.white{--label-bg:#ffffff;--label-fg:#250148;--ico-bg:#f1e2f3;--ico-fg:#250148;--rim-a:#d9a5da;--rim-b:#7fa2ff}
+.btn.blue{--label-bg:#3366dc;--label-fg:#ffffff;--ico-bg:#d9a5da;--ico-fg:#250148;--rim-a:#b279b3;--rim-b:#6f93ff}
+.btn.dark{--label-bg:#250148;--label-fg:#ffffff;--ico-bg:#b279b3;--ico-fg:#250148;--rim-a:#3366dc;--rim-b:#a78bfa}
+
+/* o padding do CTA agora vive no rótulo; zera regras antigas de maior especificidade */
+header>.btn,.hero .btn{padding:var(--rim)}
+.btn.small{font-size:12px}.btn.small .btn-label{padding:9px 14px 9px 16px}
+.btn.small .btn-ico{width:34px;height:34px}
+.btn.small .btn-ico>span{font-size:13px}
+
 @media(hover:hover) and (pointer:fine){
-  .btn:hover{transform:translateY(-2px);box-shadow:var(--lift-shadow),inset 0 1px 0 #ffffff1f}
-  .btn:hover>span{transform:translate(3px,-3px)}
-  .btn.white:hover{background:#f7f0fa}
-  .btn.blue:hover{background:#2a5ad4}
-  .btn.dark:hover{background:#34006b}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:hover::before{opacity:.85}
+  .btn:hover .btn-ico>span:nth-child(1){transform:translateX(140%);opacity:0}
+  .btn:hover .btn-ico>span:nth-child(2){transform:translateX(0);opacity:1}
+  .btn.white:hover{--label-bg:#250148;--label-fg:#ffffff;--ico-bg:#d9a5da;--ico-fg:#250148}
+  .btn.blue:hover{--label-bg:#f3ebff;--label-fg:#250148;--ico-bg:#250148;--ico-fg:#e6d5f2}
+  .btn.dark:hover{--label-bg:#3366dc;--label-fg:#ffffff;--ico-bg:#eaf0ff;--ico-fg:#250148}
 }
+
+@keyframes neon-spin{to{--neon-angle:360deg}}
+@keyframes neon-pulse{0%,100%{opacity:.32}50%{opacity:.62}}
+
+@media(max-width:1000px){
+  .btn .btn-label{padding:13px 17px 13px 20px}
+}
+@media(max-width:700px){
+  header .btn .btn-label{padding:8px 11px 8px 13px}
+  header .btn .btn-ico{width:30px;height:30px}
+  header .btn .btn-ico>span{font-size:12px}
+  .hero .btn .btn-label{padding:12px 15px 12px 18px}
+  .hero .btn .btn-ico{width:38px;height:38px}
+  .btn-label{font-size:inherit}
+}
+
 
 /* Botão de texto: sublinhado que cresce da esquerda */
 .text-btn{position:relative;transition:color var(--dur-hover) ease}
