@@ -26,18 +26,19 @@ Estrutura, navegação e catálogo revisados no projeto local; sem publicação,
 | Google Analytics | Inativo: ID real e domínio ausentes. Consentimento validado com biblioteca simulada, sem coleta real. |
 | Search Console | Meta tag preparada no gerador, token ausente; propriedade não vinculada/verificada. Não há ferramenta de conta Search Console conectada nesta execução. |
 
-## Fotos pendentes: seis espaços
+## Fotos pendentes: cinco espaços
 
 | Local no site | Material a receber | Referência |
 | --- | --- | --- |
 | Nossas lojas — Vicente Pires | Fotografia real da unidade | `dist/index.html`, `#lojas .store-photo` |
 | Nossas lojas — Ceilândia | Fotografia real da unidade | `dist/index.html`, `#lojas .store-photo.second` |
-| Self-service — Vicente Pires | Foto real do espaço/serviço | `dist/index.html`, `#self-service .self-visual` |
 | Catálogo — Sorvete trufado | Foto oficial da linha 1,8 L | `content/products.json`, produto “Sorvete trufado” |
 | Catálogo — Picolé de fruta | Foto oficial da linha à base de água | `content/products.json`, produto “Picolé de fruta” |
 | Catálogo — Picolé à base de leite | Foto oficial da linha | `content/products.json`, produto “Picolé à base de leite” |
 
-Foram conferidos os 26 arquivos `p0.webp` a `p25.webp` e todas as variantes usadas no catálogo. Há imagens de produtos na Hero, no atacado e nas demais entradas do catálogo. Os arquivos sem uso são um pudim sem embalagem, uma tampa/embalagem de pudim e a marca Boozy (`p0`, `p1`, `p9`); eles não substituem as seis fotos pendentes.
+Foram conferidos os 26 arquivos `p0.webp` a `p25.webp` e todas as variantes usadas no catálogo. Há imagens de produtos na Hero, no atacado e nas demais entradas do catálogo. Os arquivos sem uso são um pudim sem embalagem, uma tampa/embalagem de pudim e a marca Boozy (`p0`, `p1`, `p9`); eles não substituem as cinco fotos ainda pendentes.
+
+A foto do copo azul da Nuty enviada pelo usuário foi inserida no self-service em 23/11/2026. Os arquivos `dist/assets/self-service-nuty-640.webp` e `self-service-nuty-1280.webp` são versões otimizadas da mesma fotografia, sem alteração criativa. O enquadramento 4:3 preserva a altura da foto e recorta apenas o fundo nas laterais, mantendo sorvete e marca visíveis. Esta é uma foto do produto fornecida para essa seção, não uma comprovação visual do espaço físico da unidade.
 
 ## Outros materiais/dados ainda necessários
 
@@ -88,7 +89,7 @@ Jhad e doutor Luiz, tudo bem?
 
 Concluí a estrutura e a revisão funcional do site do Atacadão da Nuty, incluindo navegação, catálogo de produtos, seleção de opções e encaminhamento para os canais das lojas. Também finalizei o ajuste das palavras que acompanham a curva abaixo da apresentação inicial.
 
-As fotos reais das duas unidades, do self-service e das linhas de sorvete trufado e picolés serão inseridas assim que vocês disponibilizarem os arquivos. Para fechar os dados de atendimento, ainda precisamos confirmar WhatsApp, endereços, horários e condições comerciais.
+As fotos reais das duas unidades e das linhas de sorvete trufado e picolés serão inseridas assim que vocês disponibilizarem os arquivos. Para fechar os dados de atendimento, ainda precisamos confirmar WhatsApp, endereços, horários e condições comerciais.
 
 Como bônus fora do contrato, incluí melhorias de SEO e deixei preparada a integração com Google Search Console e Google Analytics. O SEO ajuda os buscadores a compreender o conteúdo; o Search Console permite acompanhar a presença do site na busca e identificar problemas de indexação. O Analytics permitirá entender a audiência, de onde vêm as visitas e ações como consultar produtos ou escolher uma loja, respeitando a escolha de privacidade do visitante. Essas ações não equivalem automaticamente a vendas.
 

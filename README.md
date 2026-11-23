@@ -26,4 +26,4 @@ O consentimento bloqueia a biblioteca Google antes da permissão; o visitante po
 Com Playwright disponível: `node tests/site.cjs` e `node tests/brand-curve.cjs`. Se necessário, a variável `PLAYWRIGHT_MODULE` pode apontar para o módulo já instalado e `PLAYWRIGHT_BROWSERS_PATH` para os navegadores existentes. Os testes de Analytics interceptam a biblioteca Google e usam uma configuração fictícia apenas em memória, sem coletar dados reais.
 
 ## Pendências
-WhatsApp, endereços, horários, seis espaços de fotos, regras comerciais, arquivo licenciado da fonte Oktah Round, domínio e configuração das ferramentas Google. A relação concreta está em [docs/entrega.md](docs/entrega.md).
+WhatsApp, endereços, horários, cinco espaços de fotos, regras comerciais, arquivo licenciado da fonte Oktah Round, domínio e configuração das ferramentas Google. A relação concreta está em [docs/entrega.md](docs/entrega.md).
