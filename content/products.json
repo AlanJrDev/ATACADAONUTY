@@ -1,0 +1,189 @@
+[
+  {
+    "n": "Açaí Nuty",
+    "cat": "acai",
+    "sub": "O clássico que combina com tudo.",
+    "v": [
+      [
+        "1 L",
+        15
+      ],
+      [
+        "3,6 L",
+        14
+      ],
+      [
+        "5 L",
+        17
+      ],
+      [
+        "10 L",
+        11
+      ]
+    ]
+  },
+  {
+    "n": "Açaí Boozy",
+    "cat": "acai",
+    "sub": "Mais sabor para compartilhar.",
+    "v": [
+      [
+        "5 L",
+        19
+      ],
+      [
+        "10 L",
+        18
+      ]
+    ]
+  },
+  {
+    "n": "Creme de cupuaçu",
+    "cat": "acai",
+    "sub": "Seu toque tropical favorito.",
+    "v": [
+      [
+        "1 L",
+        16
+      ],
+      [
+        "5 L",
+        20
+      ]
+    ]
+  },
+  {
+    "n": "Açaí com paçoca",
+    "cat": "acai",
+    "sub": "Uma combinação irresistível.",
+    "v": [
+      [
+        "1 L",
+        12
+      ]
+    ]
+  },
+  {
+    "n": "DUO açaí & cupuaçu",
+    "cat": "acai",
+    "sub": "Dois sabores, uma boa escolha.",
+    "v": [
+      [
+        "Volume a confirmar",
+        13
+      ]
+    ]
+  },
+  {
+    "n": "Sorvete Boozy",
+    "cat": "sorvete",
+    "sub": "Potes de 1 litro. Escolha seu sabor.",
+    "v": [
+      [
+        "Morango · 1 L",
+        3
+      ],
+      [
+        "Chocolate · 1 L",
+        5
+      ],
+      [
+        "Creme · 1 L",
+        4
+      ],
+      [
+        "Flocos · 1 L",
+        8
+      ],
+      [
+        "Napolitano · 1 L",
+        7
+      ]
+    ]
+  },
+  {
+    "n": "Pudim Boozy",
+    "cat": "sobremesa",
+    "sub": "Um final doce para qualquer momento.",
+    "v": [
+      [
+        "Consulte a embalagem",
+        2
+      ]
+    ]
+  },
+  {
+    "n": "Petit gâteau",
+    "cat": "sobremesa",
+    "sub": "Sua pausa merece uma sobremesa.",
+    "v": [
+      [
+        "120 g",
+        6
+      ]
+    ]
+  },
+  {
+    "n": "Sorvetinho Boozy",
+    "cat": "picole",
+    "sub": "A cremosidade do sorvete no seu dindim.",
+    "v": [
+      [
+        "Coco",
+        21
+      ],
+      [
+        "Morango",
+        23
+      ],
+      [
+        "Leite condensado",
+        22
+      ],
+      [
+        "Chiclete",
+        24
+      ],
+      [
+        "Maracujá",
+        25
+      ]
+    ]
+  },
+  {
+    "n": "Sorvete trufado",
+    "cat": "sorvete",
+    "sub": "Linha prevista · sabores a confirmar.",
+    "v": [
+      [
+        "1,8 L",
+        null
+      ]
+    ],
+    "placeholder": "SORVETE<br>TRUFADO"
+  },
+  {
+    "n": "Picolé de fruta",
+    "cat": "picole",
+    "sub": "À base de água · sabores a confirmar.",
+    "v": [
+      [
+        "Consulte sabores",
+        null
+      ]
+    ],
+    "placeholder": "PICOLÉS<br>DE FRUTA"
+  },
+  {
+    "n": "Picolé à base de leite",
+    "cat": "picole",
+    "sub": "Linha prevista · sabores a confirmar.",
+    "v": [
+      [
+        "Consulte sabores",
+        null
+      ]
+    ],
+    "placeholder": "PICOLÉS<br>DE LEITE"
+  }
+]
